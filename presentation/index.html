@@ -401,7 +401,7 @@ nav{
 
 <nav>
   <div class="nav-logo"><span class="nav-dot"></span> AI 스마트 학습 환경</div>
-  <div class="slide-counter"><span id="cur">1</span> / <span id="total">9</span></div>
+  <div class="slide-counter"><span id="cur">1</span> / <span id="total">19</span></div>
 </nav>
 
 <button class="arrow left" id="prev" onclick="move(-1)">&#8592;</button>
@@ -509,10 +509,10 @@ nav{
   </div>
 
   <!-- SLIDE 5: ARCH -->
-  <div class="slide" style="padding:36px 80px 24px;">
-    <div class="eyebrow">SYSTEM ARCHITECTURE</div>
-    <h2 class="slide-title" style="margin-bottom:8px;font-size:clamp(24px,3vw,36px);">시스템 <span>설계</span></h2>
-    <div class="arch-flow" style="transform:scale(0.82);transform-origin:top center;margin-top:-16px;">
+  <div class="slide" style="padding:28px 80px 20px;justify-content:flex-start;">
+    <div class="eyebrow" style="margin-bottom:8px;">SYSTEM ARCHITECTURE</div>
+    <h2 class="slide-title" style="font-size:28px;margin-bottom:10px;">시스템 <span>설계</span></h2>
+    <div class="arch-flow" style="transform:scale(0.78);transform-origin:top center;margin-top:0;">
       <div class="flow-row">
         <div class="flow-node node-input">
           <div class="fn-icon">📷</div>
@@ -535,12 +535,12 @@ nav{
       </div>
       <div class="flow-arrow-single"><div class="arr-line"></div></div>
       <div class="flow-backend">
-        <div class="fb-label">백엔드 — Spring Boot · 레이어드 아키텍처</div>
+        <div class="fb-label">백엔드 — Python · Flask · REST API</div>
         <div class="fb-layers">
-          <div class="layer-pill p1"><span class="lp-num">1</span><div><div class="lp-name">Presentation <span class="lp-en">받기</span></div><div class="lp-desc">Controller · MqttSubscriber · SseEmitter</div></div></div>
-          <div class="layer-pill p2"><span class="lp-num">2</span><div><div class="lp-name">Application <span class="lp-en">계산</span></div><div class="lp-desc">EnvironmentService · FocusSessionService · AiReportService</div></div></div>
-          <div class="layer-pill p3"><span class="lp-num">3</span><div><div class="lp-name">Domain <span class="lp-en">모델</span></div><div class="lp-desc">SensorData · FocusSession · WebcamResult (@Entity)</div></div></div>
-          <div class="layer-pill p4"><span class="lp-num">4</span><div><div class="lp-name">Data <span class="lp-en">저장</span></div><div class="lp-desc">JpaRepository → H2(개발) · MySQL(데모)</div></div></div>
+          <div class="layer-pill p1"><span class="lp-num">1</span><div><div class="lp-name">Routes <span class="lp-en">수신</span></div><div class="lp-desc">routes.py · REST API 엔드포인트 · MQTT 구독</div></div></div>
+          <div class="layer-pill p2"><span class="lp-num">2</span><div><div class="lp-name">Services <span class="lp-en">처리</span></div><div class="lp-desc">sensor_service · data_service · ai_service</div></div></div>
+          <div class="layer-pill p3"><span class="lp-num">3</span><div><div class="lp-name">Models <span class="lp-en">모델</span></div><div class="lp-desc">SensorData · FocusSession · SessionStats</div></div></div>
+          <div class="layer-pill p4"><span class="lp-num">4</span><div><div class="lp-name">Database <span class="lp-en">저장</span></div><div class="lp-desc">SQLAlchemy → H2(개발) · MySQL(프로덕션)</div></div></div>
         </div>
       </div>
       <div class="flow-split">
@@ -560,9 +560,9 @@ nav{
       <div class="eyebrow">TECH STACK</div>
       <h2 class="slide-title">기술 <span>스택</span></h2>
       <div class="stack-grid">
-        <div class="stack-card"><div class="stack-icon s-green">🍃</div><div class="stack-name">Spring Boot 3.x</div><div class="stack-ver">Java 17</div><div class="stack-desc">REST API 서버.<br>MQTT·JPA·SSE 통합 처리.</div></div>
-        <div class="stack-card"><div class="stack-icon s-blue">📡</div><div class="stack-name">SSE</div><div class="stack-ver">Spring SseEmitter</div><div class="stack-desc">서버→브라우저 단방향 푸시.<br>센서 값 자동 갱신.</div></div>
-        <div class="stack-card"><div class="stack-icon s-teal">🔧</div><div class="stack-name">Arduino + MQTT</div><div class="stack-ver">PubSubClient · Mosquitto</div><div class="stack-desc">센서 수집 → MQTT 전송.<br>가벼운 IoT 표준.</div></div>
+        <div class="stack-card"><div class="stack-icon s-green">🧪</div><div class="stack-name">Python 3.8+ / Flask 2.3</div><div class="stack-ver">Flask-CORS · Gunicorn</div><div class="stack-desc">REST API 서버.<br>CORS 허용 · Gunicorn WSGI 배포.</div></div>
+        <div class="stack-card"><div class="stack-icon s-blue">📡</div><div class="stack-name">paho-mqtt · PySerial</div><div class="stack-ver">MQTT · 시리얼 통신</div><div class="stack-desc">MQTT 구독 + QoS 1 보장.<br>PySerial로 Arduino 직렬 통신.</div></div>
+        <div class="stack-card"><div class="stack-icon s-teal">🔧</div><div class="stack-name">Arduino Uno</div><div class="stack-ver">CdS 포토레지스터 · 마이크</div><div class="stack-desc">조도(lux) · 소음(dB) 수집.<br>PubSubClient로 MQTT 발행.</div></div>
         <div class="stack-card"><div class="stack-icon s-coral">📷</div><div class="stack-name">MediaPipe</div><div class="stack-ver">Pose · Face Mesh CDN</div><div class="stack-desc">웹캠 자세·집중도 분석.<br>브라우저 처리, 영상 미전송.</div></div>
         <div class="stack-card"><div class="stack-icon s-amber">🤖</div><div class="stack-name">EXAONE API</div><div class="stack-ver">LG AI Research</div><div class="stack-desc">한국어 최적화 LLM.<br>세션 종료 후 맞춤 리포트.</div></div>
         <div class="stack-card"><div class="stack-icon s-blue">🗄️</div><div class="stack-name">H2 → MySQL</div><div class="stack-ver">Spring 프로파일 분리</div><div class="stack-desc">개발: H2 인메모리.<br>데모: MySQL 전환.</div></div>
@@ -586,96 +586,41 @@ nav{
           <div class="progress-track"><div class="progress-fill" style="width:100%"></div></div>
         </div>
         <div class="wbs-phases">
-          <!-- 완료 -->
           <div class="wbs-phase-col">
             <div class="phase-hd">
-              <div class="phase-title-txt">완료</div>
+              <div class="phase-title-txt">기초 설계</div>
               <span class="pbadge pb-done">✓ DONE</span>
             </div>
-            <div class="wc done">
-              <div class="wc-bar bc-done"></div>
-              <div class="wc-pri wp-done">✓</div>
-              <div class="wc-title">프론트엔드 레이아웃</div>
-              <div class="wc-desc">사이드바 UI 배치</div>
-              <div class="wc-date">~ 5/20 완료</div>
-            </div>
-            <div class="wc done">
-              <div class="wc-bar bc-done"></div>
-              <div class="wc-pri wp-done">✓</div>
-              <div class="wc-title">웹캠 + 집중도 측정</div>
-              <div class="wc-desc">MediaPipe 연동 완료</div>
-              <div class="wc-date">~ 5/27 완료</div>
-            </div>
+            <div class="wc done"><div class="wc-bar bc-done"></div><div class="wc-pri wp-done">✓</div><div class="wc-title">요구사항 분석</div><div class="wc-desc">기능 정의</div><div class="wc-date">5/1 ~ 5/13 완료</div></div>
+            <div class="wc done"><div class="wc-bar bc-done"></div><div class="wc-pri wp-done">✓</div><div class="wc-title">아키텍처 설계</div><div class="wc-desc">시스템 구조</div><div class="wc-date">5/1 ~ 5/13 완료</div></div>
+            <div class="wc done"><div class="wc-bar bc-done"></div><div class="wc-pri wp-done">✓</div><div class="wc-title">기술 스택 결정</div><div class="wc-desc">ADR 작성</div><div class="wc-date">5/1 ~ 5/13 완료</div></div>
           </div>
-          <!-- P1 이번 주 -->
           <div class="wbs-phase-col">
             <div class="phase-hd">
-              <div class="phase-title-txt">이번 주</div>
+              <div class="phase-title-txt">Hardware · Backend</div>
               <span class="pbadge pb-done">✓ DONE</span>
             </div>
-            <div class="wc done">
-              <div class="wc-bar bc-done"></div>
-              <div class="wc-pri wp-done">✓</div>
-              <div class="wc-title">집중도 → 백엔드 저장</div>
-              <div class="wc-desc">1~2일</div>
-              <div class="wc-date">6/3 완료</div>
-            </div>
-            <div class="wc done">
-              <div class="wc-bar bc-done"></div>
-              <div class="wc-pri wp-done">✓</div>
-              <div class="wc-title">세션 시작/종료 API</div>
-              <div class="wc-desc">1~2일</div>
-              <div class="wc-date">6/4 완료</div>
-            </div>
-            <div class="wc done">
-              <div class="wc-bar bc-done"></div>
-              <div class="wc-pri wp-done">✓</div>
-              <div class="wc-title">환경 점수 계산</div>
-              <div class="wc-desc">1일</div>
-              <div class="wc-date">6/5 완료</div>
-            </div>
+            <div class="wc done"><div class="wc-bar bc-done"></div><div class="wc-pri wp-done">✓</div><div class="wc-title">Arduino 센서 연결</div><div class="wc-desc">조도 · 소음</div><div class="wc-date">5/14 ~ 5/20 완료</div></div>
+            <div class="wc done"><div class="wc-bar bc-done"></div><div class="wc-pri wp-done">✓</div><div class="wc-title">Flask 서버 구축</div><div class="wc-desc">MQTT · REST API</div><div class="wc-date">5/21 ~ 5/27 완료</div></div>
+            <div class="wc done"><div class="wc-bar bc-done"></div><div class="wc-pri wp-done">✓</div><div class="wc-title">MQTT 구독 서비스</div><div class="wc-desc">센서 데이터 수신</div><div class="wc-date">5/21 ~ 5/27 완료</div></div>
           </div>
-          <!-- P2 다음 주 -->
           <div class="wbs-phase-col">
             <div class="phase-hd">
-              <div class="phase-title-txt">다음 주</div>
+              <div class="phase-title-txt">Frontend · AI</div>
               <span class="pbadge pb-done">✓ DONE</span>
             </div>
-            <div class="wc done">
-              <div class="wc-bar bc-done"></div>
-              <div class="wc-pri wp-done">✓</div>
-              <div class="wc-title">AI 리포트 생성</div>
-              <div class="wc-desc">2~3일</div>
-              <div class="wc-date">6/10 완료</div>
-            </div>
-            <div class="wc done">
-              <div class="wc-bar bc-done"></div>
-              <div class="wc-pri wp-done">✓</div>
-              <div class="wc-title">MQTT 수신 연동</div>
-              <div class="wc-desc">1~2일</div>
-              <div class="wc-date">6/12 완료</div>
-            </div>
-            <div class="wc done">
-              <div class="wc-bar bc-done"></div>
-              <div class="wc-pri wp-done">✓</div>
-              <div class="wc-title">주간 통계 화면</div>
-              <div class="wc-desc">1~2일</div>
-              <div class="wc-date">6/13 완료</div>
-            </div>
+            <div class="wc done"><div class="wc-bar bc-done"></div><div class="wc-pri wp-done">✓</div><div class="wc-title">웹 대시보드 개발</div><div class="wc-desc">Chart.js 시각화</div><div class="wc-date">5/28 ~ 6/3 완료</div></div>
+            <div class="wc done"><div class="wc-bar bc-done"></div><div class="wc-pri wp-done">✓</div><div class="wc-title">MediaPipe 통합</div><div class="wc-desc">웹캠 집중도 분석</div><div class="wc-date">5/28 ~ 6/3 완료</div></div>
+            <div class="wc done"><div class="wc-bar bc-done"></div><div class="wc-pri wp-done">✓</div><div class="wc-title">EXAONE AI 연동</div><div class="wc-desc">AI 리포트 생성</div><div class="wc-date">6/4 ~ 6/10 완료</div></div>
           </div>
-          <!-- P3 이후 -->
           <div class="wbs-phase-col">
             <div class="phase-hd">
-              <div class="phase-title-txt">이후</div>
+              <div class="phase-title-txt">테스트 · 배포</div>
               <span class="pbadge pb-done">✓ DONE</span>
             </div>
-            <div class="wc done">
-              <div class="wc-bar bc-done"></div>
-              <div class="wc-pri wp-done">✓</div>
-              <div class="wc-title">통합 테스트 &amp; 데모</div>
-              <div class="wc-desc">2~3일</div>
-              <div class="wc-date">6/15 완료</div>
-            </div>
+            <div class="wc done"><div class="wc-bar bc-done"></div><div class="wc-pri wp-done">✓</div><div class="wc-title">통합 테스트</div><div class="wc-desc">E2E 전체 흐름</div><div class="wc-date">6/11 ~ 6/13 완료</div></div>
+            <div class="wc done"><div class="wc-bar bc-done"></div><div class="wc-pri wp-done">✓</div><div class="wc-title">성능 최적화</div><div class="wc-desc">MediaPipe 프레임 스킵</div><div class="wc-date">6/13 ~ 6/14 완료</div></div>
+            <div class="wc done"><div class="wc-bar bc-done"></div><div class="wc-pri wp-done">✓</div><div class="wc-title">GitHub Pages 배포</div><div class="wc-desc">프로덕션 배포</div><div class="wc-date">6/15 완료</div></div>
           </div>
         </div>
       </div>
@@ -689,50 +634,45 @@ nav{
       <h2 class="slide-title">앱 <span>구조</span></h2>
       <div class="dir-wrap">
         <div class="dir-tree">
-src/main/java/com/study/<br>
-├── <span style="color:#7DD3B8">presentation/</span> <span class="layer-tag tag-p">Presentation</span><br>
-│ &nbsp;├── SensorController.java<br>
-│ &nbsp;├── SessionController.java<br>
-│ &nbsp;├── ReportController.java<br>
-│ &nbsp;├── MqttSubscriber.java<br>
-│ &nbsp;└── dto/<br>
-├── <span style="color:#FFD180">application/</span> <span class="layer-tag tag-a">Application</span><br>
-│ &nbsp;├── EnvironmentService.java<br>
-│ &nbsp;├── FocusSessionService.java<br>
-│ &nbsp;└── AiReportService.java<br>
-├── <span style="color:#CE93D8">domain/</span> <span class="layer-tag tag-d">Domain</span><br>
-│ &nbsp;├── SensorData.java<br>
-│ &nbsp;├── FocusSession.java<br>
-│ &nbsp;└── WebcamResult.java<br>
-└── <span style="color:#90CAF9">data/</span> <span class="layer-tag tag-da">Data</span><br>
-&nbsp; &nbsp;├── SensorDataRepository.java<br>
-&nbsp; &nbsp;└── FocusSessionRepository.java<br>
-<br>
-src/main/resources/<br>
-├── application.yml<br>
-├── application-dev.yml &nbsp;<span style="color:#7DD3B8">← H2</span><br>
-└── application-prod.yml <span style="color:#FFD180">← MySQL</span>
+smart-study-env/<br>
+├── <span style="color:#7DD3B8">main.py</span> <span class="layer-tag tag-p">진입점</span><br>
+├── arduino_gateway.py &nbsp;<span style="color:#7DD3B8">← 시리얼 통신</span><br>
+├── requirements.txt<br>
+├── .env<br>
+├── <span style="color:#FFD180">routes/</span> <span class="layer-tag tag-a">API</span><br>
+│ &nbsp;└── routes.py &nbsp;<span style="color:#FFD180">← REST 엔드포인트</span><br>
+├── <span style="color:#CE93D8">services/</span> <span class="layer-tag tag-d">비즈니스</span><br>
+│ &nbsp;├── sensor_service.py<br>
+│ &nbsp;├── data_service.py<br>
+│ &nbsp;└── ai_service.py<br>
+├── <span style="color:#90CAF9">models/</span> <span class="layer-tag tag-da">모델</span><br>
+│ &nbsp;└── sensor_data.py<br>
+├── arduino/<br>
+│ &nbsp;└── sensor_sketch.ino<br>
+└── frontend/<br>
+&nbsp; &nbsp;├── index.html<br>
+&nbsp; &nbsp;└── js/
         </div>
         <div class="dir-legend">
           <div class="dir-leg-item">
-            <div class="dir-leg-badge tag-p">Presentation</div>
-            <div class="dir-leg-title">요청 수신</div>
-            <div class="dir-leg-desc">Controller, MQTT, SSE<br>외부 요청 처리만 담당</div>
+            <div class="dir-leg-badge tag-p">app.py</div>
+            <div class="dir-leg-title">진입점 · 시리얼</div>
+            <div class="dir-leg-desc">main.py 서버 실행<br>arduino_gateway.py 통신</div>
           </div>
           <div class="dir-leg-item">
-            <div class="dir-leg-badge tag-a">Application</div>
+            <div class="dir-leg-badge tag-a">routes</div>
+            <div class="dir-leg-title">REST API</div>
+            <div class="dir-leg-desc">프론트엔드 요청 수신<br>MQTT 구독 처리</div>
+          </div>
+          <div class="dir-leg-item">
+            <div class="dir-leg-badge tag-d">services</div>
             <div class="dir-leg-title">비즈니스 로직</div>
-            <div class="dir-leg-desc">점수 계산, 세션 관리<br>AI 리포트 호출</div>
+            <div class="dir-leg-desc">센서 처리, 통계 계산<br>EXAONE AI 연동</div>
           </div>
           <div class="dir-leg-item">
-            <div class="dir-leg-badge tag-d">Domain</div>
-            <div class="dir-leg-title">데이터 구조</div>
-            <div class="dir-leg-desc">@Entity 클래스<br>순수 Java 모델</div>
-          </div>
-          <div class="dir-leg-item">
-            <div class="dir-leg-badge tag-da">Data</div>
-            <div class="dir-leg-title">DB 연결</div>
-            <div class="dir-leg-desc">JpaRepository 상속<br>SQL 자동 생성</div>
+            <div class="dir-leg-badge tag-da">models</div>
+            <div class="dir-leg-title">데이터 모델</div>
+            <div class="dir-leg-desc">SQLAlchemy 모델<br>H2 / MySQL 전환</div>
           </div>
         </div>
       </div>
@@ -746,16 +686,16 @@ src/main/resources/<br>
       <h2 class="slide-title">개발 <span>환경 설정</span></h2>
       <div class="env-grid">
         <div class="env-card">
-          <div class="env-icon">☕</div>
-          <div class="env-name">Java 17</div>
-          <div class="env-ver">Eclipse Temurin 17 LTS</div>
-          <div class="env-desc">Spring Boot 3.x 실행 필수 버전. JDK 설치 후 JAVA_HOME 환경변수 설정.</div>
+          <div class="env-icon">🐍</div>
+          <div class="env-name">Python 3.8+</div>
+          <div class="env-ver">pip install -r requirements.txt</div>
+          <div class="env-desc">Flask, paho-mqtt, PySerial, SQLAlchemy 설치. .env 파일로 환경변수 관리.</div>
         </div>
         <div class="env-card">
-          <div class="env-icon">🍃</div>
-          <div class="env-name">Spring Boot 3.x</div>
-          <div class="env-ver">Spring Initializr</div>
-          <div class="env-desc">Web, JPA, H2, MQTT 의존성 추가. application.yml로 H2 콘솔 활성화.</div>
+        <div class="env-icon">🧪</div>
+          <div class="env-name">Flask 2.3 + Gunicorn</div>
+          <div class="env-ver">REST API 서버 · 포트 3000</div>
+          <div class="env-desc">python main.py 실행으로 개발 서버 시작. 프로덕션은 Gunicorn WSGI로 배포.</div>
         </div>
         <div class="env-card">
           <div class="env-icon">🔧</div>
@@ -765,21 +705,21 @@ src/main/resources/<br>
         </div>
         <div class="env-card">
           <div class="env-icon">📨</div>
-          <div class="env-name">Mosquitto</div>
-          <div class="env-ver">docker-compose 실행</div>
-          <div class="env-desc">MQTT 브로커. docker-compose up으로 1883 포트 로컬 실행.</div>
+          <div class="env-name">Mosquitto MQTT</div>
+          <div class="env-ver">docker run 또는 brew install</div>
+          <div class="env-desc">로컬 브로커 1883 포트 실행. docker run -d -p 1883:1883 eclipse-mosquitto 또는 직접 설치.</div>
         </div>
         <div class="env-card">
           <div class="env-icon">🗄️</div>
           <div class="env-name">H2 → MySQL</div>
-          <div class="env-ver">프로파일 분리</div>
-          <div class="env-desc">개발: H2 인메모리(설치 불필요). 데모: -Dspring.profiles.active=prod 한 줄 전환.</div>
+          <div class="env-ver">.env DB_TYPE 설정</div>
+          <div class="env-desc">개발: DB_TYPE=h2 (설치 불필요, 자동 생성). 프로덕션: DB_TYPE=mysql + MySQL 5.7+ 설치.</div>
         </div>
         <div class="env-card">
           <div class="env-icon">🌐</div>
-          <div class="env-name">Chrome + MediaPipe</div>
-          <div class="env-ver">CDN 로드</div>
-          <div class="env-desc">웹캠 권한은 localhost에서 자동 허용. MediaPipe CDN 스크립트 한 줄로 로드.</div>
+          <div class="env-name">Chrome 90+</div>
+          <div class="env-ver">MediaPipe CDN · localhost:3000</div>
+          <div class="env-desc">localhost에서 웹캠 권한 자동 승인. HTTPS 배포 시 명시적 권한 요청 필요.</div>
         </div>
       </div>
     </div>
@@ -793,12 +733,12 @@ src/main/resources/<br>
       <div class="deploy-wrap">
         <div class="deploy-row">
           <div class="deploy-section">
-            <div class="deploy-title"><i class="ti ti-hammer" aria-hidden="true"></i> 백엔드 빌드 (Spring Boot)</div>
+            <div class="deploy-title"><i class="ti ti-hammer" aria-hidden="true"></i> 백엔드 실행 (Python Flask)</div>
             <div class="deploy-steps">
-              <div class="d-step"><div class="d-num">1</div><div>소스 코드 작성 완료</div></div>
-              <div class="d-step"><div class="d-num">2</div><span class="d-code">./mvnw package -DskipTests</span> 실행 → .jar 생성</div>
-              <div class="d-step"><div class="d-num">3</div><span class="d-code">java -jar app.jar</span> 로 서버 실행</div>
-              <div class="d-step"><div class="d-num">4</div><div>포트 8080에서 API 서비스 시작</div></div>
+              <div class="d-step"><div class="d-num">1</div><span class="d-code">pip install -r requirements.txt</span> 의존성 설치</div>
+              <div class="d-step"><div class="d-num">2</div><span class="d-code">mosquitto</span> → MQTT 브로커 실행</div>
+              <div class="d-step"><div class="d-num">3</div><span class="d-code">python arduino_gateway.py</span> → 시리얼 통신</div>
+              <div class="d-step"><div class="d-num">4</div><span class="d-code">python main.py</span> → localhost:3000</div>
             </div>
           </div>
           <div class="deploy-section">
@@ -816,8 +756,8 @@ src/main/resources/<br>
             <div class="deploy-title"><i class="ti ti-brand-docker" aria-hidden="true"></i> 전체 환경 실행 (Docker Compose)</div>
             <div class="deploy-steps">
               <div class="d-step"><div class="d-num">1</div><span class="d-code">docker-compose up -d</span> → Mosquitto + MySQL 컨테이너 실행</div>
-              <div class="d-step"><div class="d-num">2</div><div>Spring Boot 서버 실행 (prod 프로파일)</div></div>
-              <div class="d-step"><div class="d-num">3</div><div>Arduino 연결 → 센서 데이터 수신 확인</div></div>
+              <div class="d-step"><div class="d-num">2</div><span class="d-code">gunicorn main:app</span> Flask WSGI 프로덕션 실행</div>
+              <div class="d-step"><div class="d-num">3</div><div>Arduino 업로드 → 센서 데이터 수신 확인</div></div>
             </div>
           </div>
           <div class="deploy-section">
@@ -841,22 +781,22 @@ src/main/resources/<br>
       <p class="slide-sub" style="margin-bottom:24px">왜 이 기술을 선택했는지 — 핵심 결정 3가지.</p>
       <div class="adr-grid">
         <div class="adr-card">
-          <div class="adr-num">ADR-0001</div>
-          <div class="adr-title">백엔드 플랫폼</div>
-          <div class="adr-decision">✅ Spring Boot 3.x 선택</div>
-          <div class="adr-why">수업 지정 플랫폼.<br>MQTT·JPA·SSE 통합 처리.<br>웹캠 결과는 JSON만 수신해 서버 부하 없음.</div>
+          <div class="adr-num">ADR-001</div>
+          <div class="adr-title">MQTT 센서 브로커</div>
+          <div class="adr-decision">✅ Mosquitto MQTT 채택</div>
+          <div class="adr-why">낮은 대역폭 · 발행-구독 모델 · 높은 신뢰성.<br>QoS 1로 연결 끊김 시에도 메시지 보장.<br>IoT 업계 표준으로 확장성 확보.</div>
         </div>
         <div class="adr-card">
-          <div class="adr-num">ADR-0002</div>
-          <div class="adr-title">웹캠 접근 방식</div>
-          <div class="adr-decision">✅ MediaDevices API 선택</div>
-          <div class="adr-why">브라우저 내장 API.<br>설치 없이 한 줄로 동작.<br>영상 미전송, 프라이버시 보호.</div>
+          <div class="adr-num">ADR-002</div>
+          <div class="adr-title">백엔드 서버</div>
+          <div class="adr-decision">✅ Flask REST API 선택</div>
+          <div class="adr-why">낮은 학습곡선 · 높은 확장성.<br>마이크로서비스 구조에 적합한 경량 설계.<br>활발한 커뮤니티로 빠른 문제 해결.</div>
         </div>
         <div class="adr-card">
-          <div class="adr-num">ADR-0003</div>
-          <div class="adr-title">자세·집중도 분석</div>
-          <div class="adr-decision">✅ MediaPipe Pose + Face Mesh</div>
-          <div class="adr-why">CDN 한 줄로 로드.<br>키포인트로 자세 점수.<br>눈 EAR로 집중도 측정.</div>
+          <div class="adr-num">ADR-003</div>
+          <div class="adr-title">집중도 분석</div>
+          <div class="adr-decision">✅ MediaPipe 얼굴 인식 선택</div>
+          <div class="adr-why">클라이언트 처리로 개인정보 보호.<br>빠른 성능 · 무료 · 웹 완벽 지원.<br>얼굴 랜드마크 고정밀 인식으로 집중도 측정.</div>
         </div>
       </div>
     </div>
@@ -869,30 +809,30 @@ src/main/resources/<br>
       <h2 class="slide-title">센서 연동 <span>시행착오</span></h2>
       <div class="trouble-grid">
         <div class="trouble-card">
-          <div class="trouble-tag t-issue">1단계 — 초음파 센서</div>
-          <div class="trouble-title">HC-SR04 연동 실패</div>
+          <div class="trouble-tag t-issue">1단계 — Arduino 연동</div>
+          <div class="trouble-title">PySerial 데이터 수신 실패</div>
           <div class="trouble-item">
-            <div class="t-row"><span class="t-label t-issue">시도</span><span>초음파 센서로 착석 여부 및 자세 감지 구현 시도</span></div>
-            <div class="t-row"><span class="t-label t-cause" style="background:#FAEEDA;color:#633806">실패</span><span>거리 값이 불안정하게 튀어 정확한 자세 판단 불가</span></div>
-            <div class="t-row"><span class="t-label t-fix">결론</span><span>초음파 센서 제외 결정 → 웹캠 기반 MediaPipe로 대체</span></div>
+            <div class="t-row"><span class="t-label t-issue">문제</span><span>시리얼 모니터엔 정상 출력, Python에서만 데이터 수신 안 됨</span></div>
+            <div class="t-row"><span class="t-label t-cause" style="background:#FAEEDA;color:#633806">원인</span><span>Arduino 재부팅 타이밍과 Python 연결 타이밍 불일치로 버퍼 비우기 발생</span></div>
+            <div class="t-row"><span class="t-label t-fix">해결</span><span>연결 후 2초 대기 + 첫 데이터 버리기 + 재시도 로직 추가로 안정화</span></div>
           </div>
         </div>
         <div class="trouble-card">
-          <div class="trouble-tag t-issue">2단계 — 조도 센서</div>
-          <div class="trouble-title">조도 센서 미작동</div>
+          <div class="trouble-tag t-issue">2단계 — MQTT</div>
+          <div class="trouble-title">메시지 간헐적 손실</div>
           <div class="trouble-item">
-            <div class="t-row"><span class="t-label t-issue">시도</span><span>조도 센서로 실내 밝기 측정 후 환경 점수 반영 구현 시도</span></div>
-            <div class="t-row"><span class="t-label t-cause" style="background:#FAEEDA;color:#633806">실패</span><span>센서가 값을 출력하지 않거나 0 고정 — 정상 동작 불가</span></div>
-            <div class="t-row"><span class="t-label t-fix">결론</span><span>기존 센서 불량으로 판단 → 새 조도 센서로 교체 후 재시도해 정상 작동 확인</span></div>
+            <div class="t-row"><span class="t-label t-issue">문제</span><span>네트워크 지연 발생 시 백엔드에서 센서 데이터를 간헐적으로 수신 못 함</span></div>
+            <div class="t-row"><span class="t-label t-cause" style="background:#FAEEDA;color:#633806">원인</span><span>QoS 0(최대 1회) 설정 — 브로커 연결 끊김 시 메시지 자동 폐기</span></div>
+            <div class="t-row"><span class="t-label t-fix">해결</span><span>QoS 1(최소 1회 보장)로 변경 + Mosquitto 영속성 활성화 + 지수 백오프 재연결 구현</span></div>
           </div>
         </div>
         <div class="trouble-card">
-          <div class="trouble-tag t-issue">3단계 — 웹캠 전환</div>
-          <div class="trouble-title">MediaPipe 집중도 구현</div>
+          <div class="trouble-tag t-issue">3단계 — MediaPipe</div>
+          <div class="trouble-title">웹캠 처리 성능 저하</div>
           <div class="trouble-item">
-            <div class="t-row"><span class="t-label t-issue">시도</span><span>초음파 대신 웹캠으로 자세·집중도 측정 재설계</span></div>
-            <div class="t-row"><span class="t-label t-cause" style="background:#FAEEDA;color:#633806">문제</span><span>고개 숙임 기준값 튜닝 필요 — 처음엔 오탐 발생</span></div>
-            <div class="t-row"><span class="t-label t-fix">결론</span><span>어깨·귀 키포인트 임계값 반복 조정으로 안정화 성공</span></div>
+            <div class="t-row"><span class="t-label t-issue">문제</span><span>1080p 해상도에서 MediaPipe 처리 시 CPU 85%+ 프레임 지연 발생</span></div>
+            <div class="t-row"><span class="t-label t-cause" style="background:#FAEEDA;color:#633806">원인</span><span>모든 프레임을 MediaPipe로 분석 시도 → GPU 리소스 부족</span></div>
+            <div class="t-row"><span class="t-label t-fix">해결</span><span>입력 해상도 640×480 다운스케일 + 2프레임마다 분석(프레임 스킵)으로 해결</span></div>
           </div>
         </div>
       </div>
@@ -910,16 +850,16 @@ src/main/resources/<br>
             <div class="test-header">
               <div class="test-badge tb-unit">단위 테스트 (Unit Test)</div>
             </div>
-            <div class="test-item"><span>EnvironmentService — 환경 점수 계산 로직</span><span class="test-result tr-pass"><i class="ti ti-check" aria-hidden="true"></i> PASS</span></div>
-            <div class="test-item"><span>FocusSessionService — 세션 시작/종료 상태 전환</span><span class="test-result tr-pass"><i class="ti ti-check" aria-hidden="true"></i> PASS</span></div>
-            <div class="test-item"><span>AiReportService — EXAONE 폴백 메시지 처리</span><span class="test-result tr-pass"><i class="ti ti-check" aria-hidden="true"></i> PASS</span></div>
+            <div class="test-item"><span>data_service — 환경 점수 계산 로직</span><span class="test-result tr-pass"><i class="ti ti-check" aria-hidden="true"></i> PASS</span></div>
+            <div class="test-item"><span>sensor_service — MQTT 수신 데이터 파싱</span><span class="test-result tr-pass"><i class="ti ti-check" aria-hidden="true"></i> PASS</span></div>
+            <div class="test-item"><span>ai_service — EXAONE 폴백 메시지 처리</span><span class="test-result tr-pass"><i class="ti ti-check" aria-hidden="true"></i> PASS</span></div>
             <div class="test-item"><span>MediaPipe — 자세 점수 임계값 판별</span><span class="test-result tr-pass"><i class="ti ti-check" aria-hidden="true"></i> PASS</span></div>
           </div>
           <div class="test-card">
             <div class="test-header">
               <div class="test-badge tb-int">통합 테스트 (Integration Test)</div>
             </div>
-            <div class="test-item"><span>Arduino → MQTT → 백엔드 E2E 수신</span><span class="test-result tr-done"><i class="ti ti-check" aria-hidden="true"></i> 완료</span></div>
+            <div class="test-item"><span>Arduino → MQTT → Flask 백엔드 E2E 수신</span><span class="test-result tr-done"><i class="ti ti-check" aria-hidden="true"></i> 완료</span></div>
             <div class="test-item"><span>웹캠 집중도 → POST API → DB 저장 흐름</span><span class="test-result tr-done"><i class="ti ti-check" aria-hidden="true"></i> 완료</span></div>
             <div class="test-item"><span>세션 종료 → AI 리포트 생성 전체 흐름</span><span class="test-result tr-done"><i class="ti ti-check" aria-hidden="true"></i> 완료</span></div>
             <div class="test-item"><span>SSE 실시간 푸시 → 브라우저 반영 확인</span><span class="test-result tr-done"><i class="ti ti-check" aria-hidden="true"></i> 완료</span></div>
@@ -937,36 +877,155 @@ src/main/resources/<br>
       <div class="plan-grid">
         <div class="plan-card">
           <div class="plan-phase pp-1">단기 — 1개월 이내</div>
-          <div class="plan-title">센서 확장</div>
+          <div class="plan-title">센서 & 기능 확장</div>
           <div class="plan-items">
             <div class="plan-item"><i class="ti ti-plus" aria-hidden="true" style="color:var(--accent);flex-shrink:0"></i>DHT22 온습도 센서 추가</div>
-            <div class="plan-item"><i class="ti ti-plus" aria-hidden="true" style="color:var(--accent);flex-shrink:0"></i>환경 점수 가중치 5개 요소로 확장</div>
-            <div class="plan-item"><i class="ti ti-plus" aria-hidden="true" style="color:var(--accent);flex-shrink:0"></i>쾌적 범위 (18~24°C, 습도 40~60%) 기준 자동 알림</div>
+            <div class="plan-item"><i class="ti ti-plus" aria-hidden="true" style="color:var(--accent);flex-shrink:0"></i>환경 점수 5요소 가중치 확장</div>
+            <div class="plan-item"><i class="ti ti-plus" aria-hidden="true" style="color:var(--accent);flex-shrink:0"></i>쾌적 범위 자동 알림 + 주간 이메일 리포트</div>
           </div>
         </div>
         <div class="plan-card">
           <div class="plan-phase pp-2">중기 — 3개월 이내</div>
-          <div class="plan-title">성능 최적화</div>
+          <div class="plan-title">인프라 개선</div>
           <div class="plan-items">
-            <div class="plan-item"><i class="ti ti-bolt" aria-hidden="true" style="color:var(--blue);flex-shrink:0"></i>센서 데이터 배치 저장으로 DB 부하 감소</div>
-            <div class="plan-item"><i class="ti ti-bolt" aria-hidden="true" style="color:var(--blue);flex-shrink:0"></i>EXAONE 로컬 모델 (2.4B) 전환으로 응답 속도 개선</div>
-            <div class="plan-item"><i class="ti ti-bolt" aria-hidden="true" style="color:var(--blue);flex-shrink:0"></i>MediaPipe 프레임 처리 최적화 (30fps → 10fps)</div>
+            <div class="plan-item"><i class="ti ti-bolt" aria-hidden="true" style="color:var(--blue);flex-shrink:0"></i>Docker 컨테이너 배포 전환</div>
+            <div class="plan-item"><i class="ti ti-bolt" aria-hidden="true" style="color:var(--blue);flex-shrink:0"></i>AWS RDS 클라우드 데이터베이스 연동</div>
+            <div class="plan-item"><i class="ti ti-bolt" aria-hidden="true" style="color:var(--blue);flex-shrink:0"></i>React Native 모바일 앱 · 팀 공유 기능</div>
           </div>
         </div>
         <div class="plan-card">
           <div class="plan-phase pp-3">장기 — 6개월 이내</div>
-          <div class="plan-title">서비스 확장</div>
+          <div class="plan-title">아키텍처 진화</div>
           <div class="plan-items">
-            <div class="plan-item"><i class="ti ti-users" aria-hidden="true" style="color:var(--purple, #7F77DD);flex-shrink:0"></i>다중 사용자 지원 및 JWT 인증 추가</div>
-            <div class="plan-item"><i class="ti ti-cloud" aria-hidden="true" style="color:var(--purple, #7F77DD);flex-shrink:0"></i>AWS/GCP 클라우드 배포</div>
-            <div class="plan-item"><i class="ti ti-device-mobile" aria-hidden="true" style="color:var(--purple, #7F77DD);flex-shrink:0"></i>모바일 반응형 UI 개선</div>
+            <div class="plan-item"><i class="ti ti-users" aria-hidden="true" style="color:#7F77DD;flex-shrink:0"></i>마이크로서비스 아키텍처 전환</div>
+            <div class="plan-item"><i class="ti ti-brain" aria-hidden="true" style="color:#7F77DD;flex-shrink:0"></i>ML 기반 집중 패턴 예측 모델 도입</div>
+            <div class="plan-item"><i class="ti ti-world" aria-hidden="true" style="color:#7F77DD;flex-shrink:0"></i>멀티 센서 IoT 게이트웨이 · 국제화</div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- SLIDE 15: DEMO VIDEO -->
+  <!-- SLIDE 15: 코드 품질 & 성능 최적화 -->
+  <div class="slide">
+    <div style="width:100%;max-width:960px">
+      <div class="eyebrow">CODE QUALITY & PERFORMANCE</div>
+      <h2 class="slide-title">코드 품질 &amp; <span>성능 최적화</span></h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:20px;box-shadow:var(--shadow);">
+          <div style="font-size:13px;font-weight:700;color:var(--accent);margin-bottom:14px;letter-spacing:.06em;">코드 품질 관리</div>
+          <div class="test-item" style="padding:7px 0;border-bottom:0.5px solid var(--border);font-size:13px;color:var(--gray);display:flex;align-items:center;gap:8px;"><span>PEP 8 스타일 가이드 준수</span></div>
+          <div class="test-item" style="padding:7px 0;border-bottom:0.5px solid var(--border);font-size:13px;color:var(--gray);display:flex;align-items:center;gap:8px;"><span>docstring · README · 다이어그램 문서화</span></div>
+          <div class="test-item" style="padding:7px 0;border-bottom:0.5px solid var(--border);font-size:13px;color:var(--gray);display:flex;align-items:center;gap:8px;"><span>services/ · api/ 분리로 응집도 향상</span></div>
+          <div class="test-item" style="padding:7px 0;font-size:13px;color:var(--gray);display:flex;align-items:center;gap:8px;"><span>PR 기반 코드 리뷰로 품질 유지</span></div>
+        </div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:20px;box-shadow:var(--shadow);">
+          <div style="font-size:13px;font-weight:700;color:var(--accent);margin-bottom:14px;letter-spacing:.06em;">성능 최적화 노력</div>
+          <div class="test-item" style="padding:7px 0;border-bottom:0.5px solid var(--border);font-size:13px;color:var(--gray);display:flex;justify-content:space-between;"><span>MediaPipe 프레임 스킵 + 640×480 다운스케일</span><span style="color:var(--green);font-size:11px;font-weight:600;">FE</span></div>
+          <div class="test-item" style="padding:7px 0;border-bottom:0.5px solid var(--border);font-size:13px;color:var(--gray);display:flex;justify-content:space-between;"><span>Flask 비동기 처리 + 응답 캐싱</span><span style="color:var(--blue);font-size:11px;font-weight:600;">BE</span></div>
+          <div class="test-item" style="padding:7px 0;border-bottom:0.5px solid var(--border);font-size:13px;color:var(--gray);display:flex;justify-content:space-between;"><span>DB 인덱싱 + 쿼리 튜닝</span><span style="color:var(--amber);font-size:11px;font-weight:600;">DB</span></div>
+          <div class="test-item" style="padding:7px 0;font-size:13px;color:var(--gray);display:flex;justify-content:space-between;"><span>MQTT QoS 조정 · 대역폭 효율화</span><span style="color:var(--coral);font-size:11px;font-weight:600;">IoT</span></div>
+        </div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:20px;box-shadow:var(--shadow);">
+          <div style="font-size:13px;font-weight:700;color:var(--accent);margin-bottom:14px;letter-spacing:.06em;">지속적 기술 습득</div>
+          <div class="test-item" style="padding:7px 0;border-bottom:0.5px solid var(--border);font-size:13px;color:var(--gray);display:flex;align-items:center;gap:8px;"><span>IoT 프로토콜 (MQTT) 심화 학습</span></div>
+          <div class="test-item" style="padding:7px 0;border-bottom:0.5px solid var(--border);font-size:13px;color:var(--gray);display:flex;align-items:center;gap:8px;"><span>AI/ML 통합 (EXAONE API 연동)</span></div>
+          <div class="test-item" style="padding:7px 0;border-bottom:0.5px solid var(--border);font-size:13px;color:var(--gray);display:flex;align-items:center;gap:8px;"><span>실시간 센서 처리 · 시리얼 프로토콜</span></div>
+          <div class="test-item" style="padding:7px 0;font-size:13px;color:var(--gray);display:flex;align-items:center;gap:8px;"><span>Docker · 마이크로서비스 학습 예정</span></div>
+        </div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:20px;box-shadow:var(--shadow);">
+          <div style="font-size:13px;font-weight:700;color:var(--accent);margin-bottom:14px;letter-spacing:.06em;">버전 관리 & 협업</div>
+          <div class="test-item" style="padding:7px 0;border-bottom:0.5px solid var(--border);font-size:13px;color:var(--gray);display:flex;align-items:center;gap:8px;"><span>Git 기반 · 시맨틱 버전 관리</span></div>
+          <div class="test-item" style="padding:7px 0;border-bottom:0.5px solid var(--border);font-size:13px;color:var(--gray);display:flex;align-items:center;gap:8px;"><span>릴리즈 노트 · CHANGELOG 관리</span></div>
+          <div class="test-item" style="padding:7px 0;font-size:13px;color:var(--gray);display:flex;align-items:center;gap:8px;"><span>GitHub 이슈 트래킹 · PR 리뷰</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 16: 설치 가이드 -->
+  <div class="slide">
+    <div style="width:100%;max-width:960px">
+      <div class="eyebrow">QUICK START GUIDE</div>
+      <h2 class="slide-title">설치 &amp; <span>실행 가이드</span></h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:20px;box-shadow:var(--shadow);">
+          <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:12px;">1. 저장소 클론 & 의존성 설치</div>
+          <div style="background:var(--navy);border-radius:10px;padding:14px 16px;font-family:monospace;font-size:12px;color:#7DD3B8;line-height:1.9;">
+            git clone .../Study-environment.git<br>
+            cd backend<br>
+            pip install -r requirements.txt<br>
+            cp .env.example .env &nbsp;<span style="color:#FFD180"># 환경변수 설정</span>
+          </div>
+        </div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:20px;box-shadow:var(--shadow);">
+          <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:12px;">2. 환경 변수 (.env)</div>
+          <div style="background:var(--navy);border-radius:10px;padding:14px 16px;font-family:monospace;font-size:12px;color:#7DD3B8;line-height:1.9;">
+            SERIAL_PORT=/dev/ttyUSB0<br>
+            MQTT_BROKER=localhost:1883<br>
+            FLASK_PORT=3000<br>
+            EXAONE_API_KEY=your_key<br>
+            DB_TYPE=h2 <span style="color:#FFD180"># 또는 mysql</span>
+          </div>
+        </div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:20px;box-shadow:var(--shadow);">
+          <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:12px;">3. 서버 실행 (터미널 3개)</div>
+          <div style="background:var(--navy);border-radius:10px;padding:14px 16px;font-family:monospace;font-size:12px;color:#7DD3B8;line-height:1.9;">
+            mosquitto &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#90CAF9"># MQTT 브로커</span><br>
+            python arduino_gateway.py &nbsp;<span style="color:#90CAF9"># 시리얼 통신</span><br>
+            python main.py &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#90CAF9"># Flask 서버</span><br>
+            <span style="color:#CE93D8"># → http://localhost:3000</span>
+          </div>
+        </div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:20px;box-shadow:var(--shadow);">
+          <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:12px;">4. Arduino 업로드</div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div class="d-step" style="display:flex;align-items:center;gap:10px;font-size:12px;color:var(--gray);"><div class="d-num" style="width:22px;height:22px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">1</div><span>Arduino IDE에서 sensor_sketch.ino 열기</span></div>
+            <div class="d-step" style="display:flex;align-items:center;gap:10px;font-size:12px;color:var(--gray);"><div class="d-num" style="width:22px;height:22px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">2</div><span>PubSubClient 라이브러리 설치 확인</span></div>
+            <div class="d-step" style="display:flex;align-items:center;gap:10px;font-size:12px;color:var(--gray);"><div class="d-num" style="width:22px;height:22px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">3</div><span>포트 COM3 / /dev/ttyUSB0 확인 후 업로드</span></div>
+            <div class="d-step" style="display:flex;align-items:center;gap:10px;font-size:12px;color:var(--gray);"><div class="d-num" style="width:22px;height:22px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">4</div><span>시리얼 모니터로 센서 데이터 수신 확인</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 17: CONCLUSION -->
+  <div class="slide" style="background:linear-gradient(150deg,#0A2463 0%,#1351C1 60%,#0097A7 100%);">
+    <div style="max-width:820px;width:100%;text-align:center;position:relative;z-index:1;">
+      <div class="eyebrow" style="background:rgba(255,255,255,.15);color:#fff;border-color:rgba(255,255,255,.2);margin-bottom:20px;">CONCLUSION</div>
+      <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(28px,4vw,48px);font-weight:800;color:#fff;line-height:1.2;margin-bottom:20px;">
+        센서와 AI가 만드는<br><span style="background:linear-gradient(90deg,#7DD3B8,#90CAF9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">스마트 학습 환경</span>
+      </h2>
+      <p style="font-size:17px;color:rgba(255,255,255,.75);line-height:1.8;margin-bottom:36px;max-width:600px;margin-left:auto;margin-right:auto;">
+        IoT 센서와 AI를 하나로 연결해, 학습자가 언제·어디서·왜 집중하는지를 데이터로 설명하는 시스템을 구현했습니다.
+      </p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+        <div style="background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:16px 24px;min-width:140px;">
+          <div style="font-size:26px;margin-bottom:6px;">📊</div>
+          <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:3px;">실시간 모니터링</div>
+          <div style="font-size:11px;color:rgba(255,255,255,.6);">조도·소음·집중도</div>
+        </div>
+        <div style="background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:16px 24px;min-width:140px;">
+          <div style="font-size:26px;margin-bottom:6px;">🤖</div>
+          <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:3px;">AI 개인화 리포트</div>
+          <div style="font-size:11px;color:rgba(255,255,255,.6);">EXAONE 맞춤 분석</div>
+        </div>
+        <div style="background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:16px 24px;min-width:140px;">
+          <div style="font-size:26px;margin-bottom:6px;">📈</div>
+          <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:3px;">집중력 향상</div>
+          <div style="font-size:11px;color:rgba(255,255,255,.6);">데이터 기반 개선</div>
+        </div>
+        <div style="background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:16px 24px;min-width:140px;">
+          <div style="font-size:26px;margin-bottom:6px;">🔧</div>
+          <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:3px;">IoT 통합</div>
+          <div style="font-size:11px;color:rgba(255,255,255,.6);">Arduino · MQTT · Flask</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 18: DEMO VIDEO -->
   <div class="slide slide-demo">
     <div class="eyebrow">DEMO</div>
     <h2 class="slide-title">데모 <span>영상</span></h2>
@@ -989,7 +1048,7 @@ src/main/resources/<br>
     </div>
   </div>
 
-  <!-- SLIDE 16: QnA -->
+  <!-- SLIDE 19: QnA -->
   <div class="slide slide-qna" style="background:linear-gradient(135deg,#F8FAFF,#EEF4FF)">
     <div class="qna-box">
       <span class="qna-eyebrow">Q &amp; A</span>
@@ -1002,13 +1061,15 @@ src/main/resources/<br>
 </div>
 
 <script>
-const TOTAL = 16;
-let cur = 0;
+const TOTAL = 19;
+let cur = 0, interval = null, running = false;
 const slider = document.getElementById('slider');
 const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
 const curEl = document.getElementById('cur');
+const totalEl = document.getElementById('total');
 const dotsEl = document.getElementById('dots');
+totalEl.textContent = TOTAL;
 
 // build dots
 for(let i=0;i<TOTAL;i++){
