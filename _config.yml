@@ -1,0 +1,22 @@
+# GitHub Pages Configuration
+title: AI 스마트 학습환경 시스템 (Concentration Enhancement System)
+description: IoT 센서 기반 실시간 집중력 모니터링 및 환경 개선 시스템
+url: https://yourusername.github.io/concentration-system
+theme: jekyll-theme-minimal
+
+# Markdown processor
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+# Plugins
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Build settings
+exclude:
+  - README.md
+  - LICENSE
+  - CONTRIBUTING.md

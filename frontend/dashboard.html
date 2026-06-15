@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoMind - 스마트 학습 환경 모니터링</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>🌿 EcoMind</h1>
+            <p>스마트 학습 환경 모니터링 시스템</p>
+        </header>
+
+        <!-- Status Bar -->
+        <div class="status-bar" id="statusBar">
+            <div class="status-item">
+                <div class="status-indicator"></div>
+                <span>데이터 로딩 중...</span>
+            </div>
+        </div>
+
+        <!-- Sensor Cards Grid -->
+        <div class="grid">
+            <!-- Light Sensor -->
+            <div class="card" id="lightCard">
+                <div class="loading">💡 조도 센서 데이터 로딩 중...</div>
+            </div>
+
+            <!-- Motion/Noise Sensor -->
+            <div class="card" id="motionCard">
+                <div class="loading">🔊 소음 센서 데이터 로딩 중...</div>
+            </div>
+
+            <!-- Ultrasonic Sensor -->
+            <div class="card" id="ultrasonicCard">
+                <div class="loading">📏 초음파 센서 데이터 로딩 중...</div>
+            </div>
+
+            <!-- Microphone Sensor -->
+            <div class="card" id="microphoneCard">
+                <div class="loading">🎤 음성 센서 데이터 로딩 중...</div>
+            </div>
+        </div>
+
+        <!-- Statistics -->
+        <div style="margin: 30px 0;">
+            <h2 style="color: white; margin-bottom: 20px; text-align: center;">📊 센서 통계</h2>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card" id="lightStat">
+                <div class="stat-label">평균 조도</div>
+                <div class="stat-value">-</div>
+            </div>
+
+            <div class="stat-card" id="noiseStat">
+                <div class="stat-label">최대 소음</div>
+                <div class="stat-value">-</div>
+            </div>
+
+            <div class="stat-card" id="distanceStat">
+                <div class="stat-label">평균 거리</div>
+                <div class="stat-value">-</div>
+            </div>
+
+            <div class="stat-card" id="dataStat">
+                <div class="stat-label">수집된 데이터</div>
+                <div class="stat-value">-</div>
+            </div>
+        </div>
+
+        <!-- Last Update -->
+        <div style="text-align: right; color: white; margin-top: 20px;">
+            <small id="lastUpdate">마지막 업데이트: -</small>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

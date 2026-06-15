@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>데이터 초기화</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin: 10px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .success {
+            display: none;
+            color: #2ecc71;
+            font-weight: 600;
+            margin-top: 20px;
+            padding: 15px;
+            background: #f0fdf4;
+            border-radius: 6px;
+        }
+
+        .link {
+            margin-top: 20px;
+        }
+
+        a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔄 데이터 초기화</h1>
+        <p>
+            뽀모도로 타이머와 시선 감지 데이터를 초기화합니다.<br>
+            새로운 하루가 시작됩니다!
+        </p>
+
+        <button onclick="resetData()">✨ 데이터 초기화</button>
+
+        <div class="success" id="success">
+            ✅ 데이터가 초기화되었습니다!<br>
+            2초 후 대시보드로 이동합니다...
+        </div>
+
+        <div class="link">
+            <a href="src/pages/dashboard.html">← 대시보드로 돌아가기</a>
+        </div>
+    </div>
+
+    <script>
+        function resetData() {
+            localStorage.clear();
+            console.log('✅ localStorage 초기화 완료');
+
+            document.getElementById('success').style.display = 'block';
+
+            setTimeout(() => {
+                location.href = 'src/pages/dashboard.html';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
